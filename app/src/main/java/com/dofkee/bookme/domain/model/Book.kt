@@ -1,4 +1,4 @@
-package com.dofkee.bookme.domain
+package com.dofkee.bookme.domain.model
 
 //дата класс книги в рамках бизнес-логики
 data class Book (

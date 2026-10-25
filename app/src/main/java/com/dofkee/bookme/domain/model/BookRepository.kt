@@ -1,4 +1,4 @@
-package com.dofkee.bookme.domain
+package com.dofkee.bookme.domain.model
 
 enum class CollectionType {liked, later, disliked}
 
