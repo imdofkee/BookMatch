@@ -24,5 +24,7 @@ interface BookRepository {
 //    перемещение (откуда куда)
     suspend fun updateToCollection(BookId: Int, from: CollectionType, to: CollectionType)
 
-    suspend fun remveIntoCollection(BookId: Int, collectionType: CollectionType)
+    suspend fun removeIntoCollection(BookId: Int, collectionType: CollectionType)
+
+    suspend fun searchBook(search: String): List<Book>
 }
