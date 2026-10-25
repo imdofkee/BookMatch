@@ -4,7 +4,7 @@ package com.dofkee.bookme.domain.model
 data class Book (
     var id: Int,
     var title: String,
-    var authors: String,
+    var authors: List<String>,
     var bookAnnotation: String,
     var photo: String?,
     var genres: List<String>

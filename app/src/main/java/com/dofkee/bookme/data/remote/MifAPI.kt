@@ -1,6 +1,6 @@
 package com.dofkee.bookme.data.remote
 
-import com.dofkee.bookme.data.remote.dto.Book
+import com.dofkee.bookme.data.remote.dto.BookDto
 
 //импорты для апи
 import retrofit2.http.GET
@@ -16,7 +16,7 @@ interface MifAPI {
         @Query("limit") limit: Int = 10,
 //        двигать offset!
         @Query("offset") offset: Int = 10
-    ): List<Book>
+    ): List<BookDto>
     @GET("api/v1/books/{id}")
-    suspend fun getBookById(@Path("id") id: Int): Book
+    suspend fun getBookById(@Path("id") id: Int): BookDto
 }
