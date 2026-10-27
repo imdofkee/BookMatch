@@ -1,5 +1,6 @@
 package com.dofkee.bookme.domain.repository
 
+import com.dofkee.bookme.data.remote.dto.BookDto
 import com.dofkee.bookme.domain.model.Book
 import com.dofkee.bookme.domain.model.BookInCollection
 import com.dofkee.bookme.domain.model.Collection
@@ -26,5 +27,5 @@ interface BookRepository {
 
     suspend fun removeIntoCollection(BookId: Int, collectionType: CollectionType)
 
-    suspend fun searchBook(search: String): List<Book>
+    suspend fun searchBook(search: String): List<BookDto>
 }
