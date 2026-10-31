@@ -9,6 +9,6 @@ class RemoteDataSource(private val mifApi: MifAPI) {
     fun searchBookById(id: Int) : BookDto =
         mifApi.getBookById(id = id)
 
-    fun searchBookByTitle(search: String) : BookDto? =
+    fun searchBookByTitle(search: String) : List<BookDto> =
         mifApi.getBookByTitle(query = search)
 }

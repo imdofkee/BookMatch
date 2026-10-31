@@ -10,22 +10,19 @@ import kotlinx.coroutines.flow.Flow
 interface BookRepository {
 //    flow
     fun observeAll(): Flow<List<Book>>
-// by one
-    suspend fun getBook(id: Int): Book?
-
-// обновление ленты вручную (пока я не уверена, что надо)
-//    suspend fun refresh()
 
     fun observeCollection(): Flow<List<Collection>>
 
-    fun booksInCollection(collectionType: CollectionType): Flow<List<BookInCollection>>
+    fun booksInCollection(collectionType: CollectionType): Flow<List<Book>>
 
-    suspend fun addIntoCollection(BookId: Int, collectionType: CollectionType)
+    suspend fun addIntoCollection(bookId: Int, collectionType: CollectionType)
 
 //    перемещение (откуда куда)
-    suspend fun updateToCollection(BookId: Int, from: CollectionType, to: CollectionType)
+    suspend fun updateToCollection(bookId: Int, from: CollectionType, to: CollectionType)
 
-    suspend fun removeIntoCollection(BookId: Int, collectionType: CollectionType)
+    suspend fun removeIntoCollection(bookId: Int, collectionType: CollectionType)
 
     suspend fun searchBook(search: String): List<BookDto>
+
+    suspend fun getAllBooksFromAPI(search: String) : List<BookDto>
 }

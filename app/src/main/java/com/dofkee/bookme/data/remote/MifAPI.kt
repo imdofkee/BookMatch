@@ -22,5 +22,6 @@ interface MifAPI {
     fun getBookById(@Path("id") id: Int): BookDto
 
     @GET("api/v1/books")
-    fun getBookByTitle(@Query("search") query: String) : BookDto?
+    fun getBookByTitle(@Query("search") query: String) : List<BookDto>
+
 }
