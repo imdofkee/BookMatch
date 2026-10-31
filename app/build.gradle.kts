@@ -45,6 +45,11 @@ dependencies {
     // Конвертер JSON -> объекты Kotlin (Gson)
     implementation("com.squareup.retrofit2:converter-gson:2.11.0")
 
+    // навигация между экранами
+    implementation("androidx.navigation:navigation-compose:2.5.3")
+    implementation("androidx.compose.ui:ui:1.6.0-alpha08")
+    implementation("androidx.compose.material:material:1.6.0-alpha08")
+
 
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.activity.compose)

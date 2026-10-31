@@ -19,6 +19,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.dofkee.bookme.domain.model.Book
 import com.dofkee.bookme.ui.theme.BgColor
 import com.dofkee.bookme.ui.theme.CoralColor
 import com.dofkee.bookme.ui.theme.DarkBlueColor
@@ -77,7 +78,7 @@ fun HomeScreen(modifier: Modifier) {
                 verticalArrangement = Arrangement.Bottom // Прижимаем текст к низу
             ) {
                 Text(
-                    text = "Рей Бредбери",
+                    text = "name",
                     color = TextColor,
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Normal
