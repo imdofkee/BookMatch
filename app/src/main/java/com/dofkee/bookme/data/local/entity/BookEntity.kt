@@ -1,10 +1,14 @@
 package com.dofkee.bookme.data.local.entity
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "books")
 data class BookEntity(
-    var idEntity: Int,
-    var titleEntity: String,
-    var authorsEntity: List<String>,
-    var annotationEntity: String?,
-    var imageEntity: String?,
-    var genresEntity: List<String>?
+    @PrimaryKey val id: Int,
+    val title: String,
+    val authors: List<String>,
+    val annotation: String,
+    val photo: String?,
+    val genres: List<String>
 )

@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -37,8 +38,8 @@ android {
 
 dependencies {
 //    ДЛЯ API????
-    implementation("com.squareup.retrofit2:retrofit:2.11.0")
-    implementation("com.squareup.retrofit2:converter-gson:2.11.0")
+    implementation("com.squareup.retrofit2:retrofit:3.0.0")
+    implementation("com.squareup.retrofit2:converter-gson:3.0.0")
 
     // Retrofit (сетевые запросы)
     implementation("com.squareup.retrofit2:retrofit:2.11.0")
@@ -50,6 +51,11 @@ dependencies {
     implementation("androidx.compose.ui:ui:1.6.0-alpha08")
     implementation("androidx.compose.material:material:1.6.0-alpha08")
 
+    // локальная БД
+    val roomVersion = "2.7"
+    implementation("androidx.room:room-runtime:$roomVersion")
+    implementation("androidx.room:room-ktx:$roomVersion")
+    ksp("androidx.room:room-compiler:$roomVersion") // KSP-процессор для генерации кода Room
 
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.activity.compose)
