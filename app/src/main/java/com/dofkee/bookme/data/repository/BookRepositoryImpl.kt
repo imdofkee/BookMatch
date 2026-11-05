@@ -1,6 +1,7 @@
 package com.dofkee.bookme.data.repository
 
 import android.util.Log
+import com.dofkee.bookme.data.local.dao.BookDao
 import com.dofkee.bookme.data.remote.RemoteDataSource
 import com.dofkee.bookme.data.remote.dto.BookDto
 import com.dofkee.bookme.domain.model.Book
@@ -11,7 +12,7 @@ import com.dofkee.bookme.domain.repository.BookRepository
 import kotlinx.coroutines.flow.Flow
 
 class BookRepositoryImpl(
-//    private val dao: BookDao,
+    private val dao: BookDao,
     private val inCollection: BookInCollection,
     private val dto: BookDto,
     private val remote: RemoteDataSource,
@@ -51,15 +52,6 @@ class BookRepositoryImpl(
         }
     }
 
-    suspend fun getBooksFromAPI(search: String) : List<BookDto> {
-        try {
-            return remote.getBooksFromAPI(search)
-        }
-        catch (e: Exception) {
-            throw e
-        }
-    }
-
     override suspend fun getAllBooksFromAPI(search: String) : List<BookDto> {
         try {
             return remote.getBooksFromAPI(search)
@@ -68,5 +60,4 @@ class BookRepositoryImpl(
             throw e
         }
     }
-
 }

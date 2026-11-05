@@ -52,10 +52,10 @@ dependencies {
     implementation("androidx.compose.material:material:1.6.0-alpha08")
 
     // локальная БД
-    val roomVersion = "2.7"
+    val roomVersion = "2.7.0"
     implementation("androidx.room:room-runtime:$roomVersion")
     implementation("androidx.room:room-ktx:$roomVersion")
-    ksp("androidx.room:room-compiler:$roomVersion") // KSP-процессор для генерации кода Room
+    ksp("androidx.room:room-compiler:$roomVersion")
 
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.activity.compose)
