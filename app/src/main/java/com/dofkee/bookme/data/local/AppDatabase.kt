@@ -18,7 +18,11 @@ import com.dofkee.bookme.data.local.entity.BookToCollectionEntity
 )
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
+
     abstract fun bookDao(): BookDao
     abstract fun bookToCollectionDao(): BookToCollectionDao
-}
 
+    companion object {
+        const val DATABASE_NAME = "bookme.db"
+    }
+}
