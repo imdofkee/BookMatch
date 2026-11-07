@@ -5,7 +5,6 @@ import com.dofkee.bookme.data.local.entity.BookEntity
 import com.dofkee.bookme.data.remote.dto.BookDto
 import com.dofkee.bookme.domain.model.Collection
 import com.dofkee.bookme.domain.model.CollectionType
-import kotlin.collections.orEmpty
 
 fun BookDto.toEntity(): BookEntity = BookEntity(
     id = idDto,
@@ -16,9 +15,14 @@ fun BookDto.toEntity(): BookEntity = BookEntity(
     genres = genresDto.orEmpty()
 )
 
-fun CollectionCount.toDomain(firstBookPhoto: String? = null): com.dofkee.bookme.domain.model.Collection =
+fun CollectionCount.toDomain(firstBookPhoto: String? = null): Collection =
     Collection(
         type = CollectionType.valueOf(type),
+        name = when (CollectionType.valueOf(type)) {
+            CollectionType.liked    -> "Понравившееся"
+            CollectionType.later    -> "Позже"
+            CollectionType.disliked -> "Отклонённые"
+        },
         bookCount = count,
         firstBookPhoto = firstBookPhoto
     )

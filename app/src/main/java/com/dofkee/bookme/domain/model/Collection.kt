@@ -3,11 +3,10 @@ package com.dofkee.bookme.domain.model
 enum class CollectionType {liked, later, disliked}
 
 data class Collection(
-    var Type: CollectionType,
-    var collectionName: String,
-    // сколько книг в коллекции
-    var BookCount: Int,
-    var FirstBookPic: String?,
+    val type: CollectionType,
+    val name: String,
+    val bookCount: Int,
+    val firstBookPhoto: String?
 )
 
 //свзяь книги в БД и коллекции в которой она лежит
