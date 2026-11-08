@@ -33,44 +33,30 @@ import com.dofkee.bookme.ui.theme.LightBooklist
 import com.dofkee.bookme.ui.theme.TextColor
 
 @Composable
-
-//@Composable
-//fun BooklistsScreen(
-//    modifier: Modifier = Modifier,
-//    onBack: () -> Unit,
-//    onCollectionClick: (String) -> Unit
-//) {
-//    HomeScreen(onBooklistClick = onCollectionClick)
-//}
-fun BooklistsScreen(modifier: Modifier, onBack: () -> Unit, onCollectionClick: (String) -> Unit) {
-    var currentScreen by remember { mutableStateOf("home") }
-    var selectedBooklist by remember { mutableStateOf("") }
-
-    if (currentScreen == "home") {
-        HomeScreen(
-            onBooklistClick = { name ->
-                selectedBooklist = name
-                currentScreen = "booklist"
-            }
-        )
-    } else {
-        BooklistScreen(
-            title = selectedBooklist,
-            onBack = { currentScreen = "home" }
-        )
-    }
+fun BooklistsScreen(
+    modifier: Modifier = Modifier,
+    onCollectionClick: (String) -> Unit
+) {
+    BooklistsContent(
+        modifier = modifier,
+        onBooklistClick = onCollectionClick
+    )
 }
 
 @Composable
-fun HomeScreen(onBooklistClick: (String) -> Unit) {
+fun BooklistsContent(
+    modifier: Modifier = Modifier,
+    onBooklistClick: (String) -> Unit
+) {
     val isDarkTheme = isSystemInDarkTheme()
 
     val bgColor = if (isDarkTheme) DarkBgColor else BgColor
-    val textColor = if (isDarkTheme) TextColor else TextColor
+    // было: if (isDarkTheme) TextColor else TextColor — ветви идентичны
+    val textColor = TextColor
     val recColor = if (isDarkTheme) DarkBooklist else LightBooklist
 
     Box(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize()
             .background(bgColor)
     ) {
@@ -79,7 +65,7 @@ fun HomeScreen(onBooklistClick: (String) -> Unit) {
                 .fillMaxSize()
                 .verticalScroll(rememberScrollState())
                 .padding(horizontal = 20.dp)
-                .padding(bottom = 100.dp) // отступ нижний
+                .padding(bottom = 100.dp)
         ) {
             Spacer(modifier = Modifier.height(24.dp))
             Row(
@@ -180,7 +166,7 @@ fun MenuButton(
 fun BooklistScreen(title: String, onBack: () -> Unit) {
     val isDarkTheme = isSystemInDarkTheme()
     val bgColor = if (isDarkTheme) DarkBgColor else BgColor
-    val textColor = if (isDarkTheme) TextColor else TextColor
+    val textColor = TextColor
 
     Column(
         modifier = Modifier
@@ -191,7 +177,7 @@ fun BooklistScreen(title: String, onBack: () -> Unit) {
         verticalArrangement = Arrangement.Center
     ) {
         Text(
-            text = "Роут на буклист :\n$title",
+            text = "Ты не добавил ни одной книги",
             color = textColor,
             fontSize = 24.sp,
             textAlign = TextAlign.Center,

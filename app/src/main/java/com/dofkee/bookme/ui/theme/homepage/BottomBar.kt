@@ -13,25 +13,16 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.dofkee.bookme.R
 import com.dofkee.bookme.Routes
+import com.dofkee.bookme.navigateTab
 import com.dofkee.bookme.ui.theme.OrangeColor
 import com.dofkee.bookme.ui.theme.TextColor
 
-
-fun NavHostController.navigateTab(route: String) {
-    if (currentDestination?.route == route) return
-
-    navigate(route) {
-        popUpTo(graph.startDestinationId) { saveState = true }
-        launchSingleTop = true
-        restoreState = true
-    }
-}
 @Composable
 fun BottomBar(navController: NavHostController) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 24.dp, vertical = 8.dp) // Отступы по бокам
+            .padding(horizontal = 24.dp, vertical = 8.dp)
             .height(64.dp)
             .background(OrangeColor, RoundedCornerShape(32.dp))
             .padding(horizontal = 32.dp),
@@ -62,6 +53,5 @@ fun BottomBar(navController: NavHostController) {
                 .size(28.dp)
                 .clickable { navController.navigateTab(Routes.ACCOUNT) }
         )
-
     }
 }

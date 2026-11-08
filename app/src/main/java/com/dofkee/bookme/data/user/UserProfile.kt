@@ -80,7 +80,7 @@ fun ProfileScreen(modifier: Modifier, onBack: () -> Unit) {
         ) {
             // НАЗАД
             IconButton(
-                onClick = { },
+                onClick = onBack,
                 modifier = Modifier
                     .padding(top = 16.dp)
                     .offset(x = (-12).dp)

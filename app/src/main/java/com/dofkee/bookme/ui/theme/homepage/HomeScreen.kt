@@ -2,20 +2,27 @@ package com.dofkee.bookme.ui.theme.homepage
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.dofkee.bookme.R
-import com.dofkee.bookme.domain.model.Book
-import com.dofkee.bookme.ui.component.BookCard
 import com.dofkee.bookme.ui.theme.BgColor
+import com.dofkee.bookme.ui.theme.BookUiState
+import com.dofkee.bookme.ui.theme.BookViewModel
 import com.dofkee.bookme.ui.theme.CoralColor
+import com.dofkee.bookme.ui.theme.DarkBgColor
 import com.dofkee.bookme.ui.theme.DarkBlueColor
 import com.dofkee.bookme.ui.theme.OrangeColor
 import com.dofkee.bookme.ui.theme.TextColor
@@ -23,28 +30,22 @@ import com.dofkee.bookme.ui.theme.TextColor
 @Composable
 fun HomeScreen(
     modifier: Modifier = Modifier,
+    viewModel: BookViewModel = hiltViewModel(),
     onSettingsClick: () -> Unit = {},
-    onProfileClick: () -> Unit = {},
-    onBooklistsClick: () -> Unit = {},
-    onReadClick: () -> Unit = {},
-    onLike: () -> Unit = {},
-    onDislike: () -> Unit = {},
-    onReadLater: () -> Unit = {}
+    onProfileClick: () -> Unit = {}
 ) {
-    // мок книга
-    val testBook = Book(
-        id = 1,
-        title = "451 градус по Фаренгейту",
-        authors = listOf("Рэй Брэдбери"),
-        bookAnnotation = "451 градус по Фаренгейту — температура, при которой воспламеняется и горит бумага. Главный герой — Монтэг, пожарник, но смысл этой профессии давно изменился...",
-        photo = "https://imo10.labirint.ru/books/712914/cover.jpg/484-0",
-        genres = listOf("Фантастика")
-    )
+    val state by viewModel.state.collectAsStateWithLifecycle()
+
+    val books = (state as? BookUiState.Success)?.books ?: emptyList()
+    val pagerState = rememberPagerState(pageCount = { books.size })
+    val currentBook = books.getOrNull(pagerState.currentPage)
+
+    val bgColor = if (isSystemInDarkTheme()) DarkBgColor else BgColor
 
     Column(
         modifier = modifier
             .fillMaxSize()
-            .background(BgColor)
+            .background(bgColor)
             .padding(horizontal = 24.dp, vertical = 16.dp)
     ) {
         Row(
@@ -53,26 +54,39 @@ fun HomeScreen(
             verticalAlignment = Alignment.CenterVertically
         ) {
             IconButton(onClick = onSettingsClick) {
-                Icon(
-                    painter = painterResource(R.drawable.settingsicon),
-                    contentDescription = "Настройки",
-                    tint = TextColor
-                )
+                Icon(painterResource(R.drawable.settingsicon), "Настройки", tint = TextColor)
             }
-
             IconButton(onClick = onProfileClick) {
-                Icon(
-                    painter = painterResource(id = R.drawable.usericon),
-                    contentDescription = "Профиль",
-                    modifier = Modifier.size(36.dp)
-                )
+                Icon(painterResource(R.drawable.usericon), "Профиль", modifier = Modifier.size(36.dp))
             }
         }
 
         Spacer(Modifier.height(24.dp))
 
         Box(modifier = Modifier.weight(1f)) {
-            BookCard(book = testBook)
+            when (state) {
+                is BookUiState.Loading -> CircularProgressIndicator(
+                    modifier = Modifier.align(Alignment.Center),
+                    color = OrangeColor
+                )
+                is BookUiState.Error -> Text(
+                    text = (state as BookUiState.Error).message,
+                    color = Color.Red,
+                    modifier = Modifier.align(Alignment.Center)
+                )
+                is BookUiState.Success -> {
+                    if (books.isEmpty()) {
+                        Text("Кажется, что книги закончились!", color = TextColor, modifier = Modifier.align(Alignment.Center))
+                    } else {
+                        HorizontalPager(
+                            state = pagerState,
+                            modifier = Modifier.fillMaxSize()
+                        ) { page ->
+                            BookCard(book = books[page])
+                        }
+                    }
+                }
+            }
         }
 
         Spacer(Modifier.height(24.dp))
@@ -81,20 +95,17 @@ fun HomeScreen(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.spacedBy(12.dp)
         ) {
-            // Дизлайк
             Box(
                 modifier = Modifier
                     .weight(0.3f)
                     .height(50.dp)
                     .background(DarkBlueColor, RoundedCornerShape(16.dp))
-                    .clickable { onDislike() },
+                    .clickable(enabled = currentBook != null) {
+                        currentBook?.let { viewModel.onDislikeClicked(it) }
+                    },
                 contentAlignment = Alignment.Center
             ) {
-                Icon(
-                    painter = painterResource(R.drawable.thumbs_downicon),
-                    contentDescription = "Дизлайк",
-                    tint = Color.White
-                )
+                Icon(painterResource(R.drawable.thumbs_downicon), "Дизлайк", tint = Color.White)
             }
 
             Box(
@@ -102,30 +113,28 @@ fun HomeScreen(
                     .weight(0.35f)
                     .height(50.dp)
                     .background(OrangeColor, RoundedCornerShape(16.dp))
-                    .clickable { onReadLater() },
+                    .clickable(enabled = currentBook != null) {
+                        currentBook?.let { viewModel.onLaterClicked(it) }
+                    },
                 contentAlignment = Alignment.Center
             ) {
-                Icon(
-                    painter = painterResource(R.drawable.sleepicon),
-                    contentDescription = "Позже",
-                    modifier = Modifier.size(24.dp),
-                    tint = TextColor
-                )
+                Icon(painterResource(R.drawable.sleepicon), "Позже", modifier = Modifier.size(24.dp), tint = TextColor)
             }
+
             Box(
                 modifier = Modifier
                     .weight(0.35f)
                     .height(50.dp)
                     .background(CoralColor, RoundedCornerShape(16.dp))
-                    .clickable { onLike() },
+                    .clickable(enabled = currentBook != null) {
+                        currentBook?.let { viewModel.onLikeClicked(it) }
+                    },
                 contentAlignment = Alignment.Center
             ) {
-                Icon(
-                    painter = painterResource(R.drawable.likeixon), // Твоя иконка лайка
-                    contentDescription = "Лайк",
-                    tint = Color.White
-                )
+                Icon(painterResource(R.drawable.likeixon), "Лайк", tint = Color.White)
             }
         }
+
+        Spacer(Modifier.height(16.dp))
     }
 }
