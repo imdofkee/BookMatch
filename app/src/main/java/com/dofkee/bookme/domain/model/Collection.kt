@@ -11,6 +11,6 @@ data class Collection(
 
 //свзяь книги в БД и коллекции в которой она лежит
 data class BookInCollection(
-    var BookId: Int,
+    var bookId: Int,
     var whichCollection: CollectionType,
 )

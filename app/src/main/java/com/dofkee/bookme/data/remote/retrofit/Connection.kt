@@ -1,12 +1,34 @@
 package com.dofkee.bookme.data.remote.retrofit
 
 import com.dofkee.bookme.data.remote.MifAPI
+import com.dofkee.bookme.data.remote.RemoteDataSource
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Singleton
 
-// аналог localhost
-val API_URL = Retrofit.Builder().baseUrl("http://10.0.2.2/")
-    .addConverterFactory(GsonConverterFactory.create()) //для JSON
-    .build()
+@Module
+@InstallIn(SingletonComponent::class)
 
-val mif_api: MifAPI = API_URL.create(MifAPI::class.java)
+object NetworkModule {
+    // аналог localhost
+    private const val BASE_URL = "http://10.0.2.2/"
+
+    @Provides
+    @Singleton
+    fun provideRetrofit(): Retrofit = Retrofit.Builder()
+        .baseUrl(BASE_URL)
+        .addConverterFactory(GsonConverterFactory.create()) //для JSON
+        .build()
+
+    @Provides
+    @Singleton
+    fun provideMifApi(retrofit: Retrofit): MifAPI = retrofit.create(MifAPI::class.java)
+
+    @Provides
+    @Singleton
+    fun provideRemoteDataSource(mifApi: MifAPI): RemoteDataSource = RemoteDataSource(mifApi)
+}
