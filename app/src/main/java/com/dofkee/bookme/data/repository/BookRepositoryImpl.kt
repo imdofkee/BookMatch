@@ -30,7 +30,30 @@ class BookRepositoryImpl @Inject constructor(
 
     override fun observeCollection(): Flow<List<Collection>> =
         collectionDao.observeCounts().map { counts ->
-            counts.map { it.toDomain() }
+            counts.map { count ->
+                // Получаем картинку первой книги для обложки коллекции (suspend функция внутри map)
+                val photo = collectionDao.firstBookPhoto(count.type)
+
+                // Преобразуем строку в enum
+                val collectionType = when (count.type.lowercase()) {
+                    "liked" -> CollectionType.liked
+                    "later" -> CollectionType.later
+                    "disliked" -> CollectionType.disliked
+                    else -> CollectionType.liked // на всякий случай
+                }
+
+                // Создаем объект Collection напрямую
+                Collection(
+                    type = collectionType,
+                    name = when (collectionType) {
+                        CollectionType.liked -> "Понравилось"
+                        CollectionType.later -> "На потом"
+                        CollectionType.disliked -> "Не понравилось"
+                    },
+                    bookCount = count.count,
+                    firstBookPhoto = photo
+                )
+            }
         }
 
     override fun booksInCollection(collectionType: CollectionType): Flow<List<Book>> =
@@ -64,21 +87,20 @@ class BookRepositoryImpl @Inject constructor(
     }
 
     override suspend fun searchBook(search: String): List<BookDto> {
-        try {
-            return remote.searchBookByTitle(search)
-        }
-        catch (e: Exception) {
-            throw e
-        }
+        return remote.searchBookByTitle(search)
     }
 
-    override suspend fun getAllBooksFromAPI(search: String) : List<BookDto> {
+    override suspend fun getAllBooksFromAPI(search: String): List<BookDto> {
         try {
+            Log.wtf("BOOKME_DIAG", "remote.getBooksFromAPI('$search') started")
             val books = remote.getBooksFromAPI(search)
-            dao.upsertAll(books.map { it.toEntity() })
+            Log.wtf("BOOKME_DIAG", "remote returned ${books.size} items")
+            val entities = books.map { it.toEntity() }
+            dao.upsertAll(entities)
+            Log.wtf("BOOKME_DIAG", "upserted ${entities.size} rows into Room")
             return books
         } catch (e: Exception) {
-            Log.e("BookRepository", "getBooksFromAPI failed", e)
+            Log.wtf("BOOKME_DIAG", "repo error: ${e.message}", e)
             throw e
         }
     }

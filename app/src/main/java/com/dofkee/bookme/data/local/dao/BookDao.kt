@@ -16,7 +16,6 @@ interface BookDao {
         LEFT JOIN book_collections ON books.id = book_collections.book_id
     """)
     fun observeAllWithCollection(): Flow<List<BookWithCollection>>
-    //                                      ^^^^^^^^^^^^^^^^ ✅ BookWithCollection
 
     @Query("""
         SELECT books.*, book_collections.type AS collection_type
@@ -26,7 +25,6 @@ interface BookDao {
         ORDER BY book_collections.added_at DESC
     """)
     fun observeByCollection(type: String): Flow<List<BookWithCollection>>
-    //                                           ^^^^^^^^^^^^^^^^ ✅ BookWithCollection
 
     @Query("SELECT * FROM books WHERE id = :id")
     suspend fun getById(id: Int): BookEntity?
