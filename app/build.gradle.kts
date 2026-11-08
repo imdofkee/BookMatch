@@ -62,6 +62,11 @@ dependencies {
     implementation("com.google.dagger:hilt-android:2.57.1")
     ksp("com.google.dagger:hilt-android-compiler:2.57.1")
 
+    // coil
+    implementation("io.coil-kt.coil3:coil-compose:3.3.0")
+    // на вский случай
+    implementation("io.coil-kt.coil3:coil-network-okhttp:3.3.0")
+
 
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.activity.compose)

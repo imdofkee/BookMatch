@@ -337,6 +337,7 @@ fun GenreChip(
             text = text,
             color = textColor,
             fontSize = 13.sp
+
         )
     }
 }
