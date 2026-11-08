@@ -15,8 +15,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.dofkee.bookme.data.user.BooklistScreen
-import com.dofkee.bookme.data.user.BooklistsScreen
+import com.dofkee.bookme.ui.theme.booklists.BooklistScreen
+import com.dofkee.bookme.ui.theme.booklists.BooklistsScreen
 import com.dofkee.bookme.data.user.ProfileScreen
 import com.dofkee.bookme.ui.theme.homepage.BottomBar
 import com.dofkee.bookme.ui.theme.homepage.HomeScreen
@@ -93,15 +93,6 @@ fun AppRoutes(modifier: Modifier = Modifier) {
                     modifier = Modifier,
                     onBack = { router.popBackStack() }
                 )
-            }
-
-            // Плейсхолдер: у вас пока нет экрана настроек,
-            // но маршрут нужен, иначе при клике на шестерёнку приложение упадёт
-            composable(Routes.SETTINGS) {
-                Box(
-                    modifier = Modifier.fillMaxSize(),
-                    contentAlignment = Alignment.Center
-                ) { Text("Настройки (в разработке)") }
             }
         }
     }
