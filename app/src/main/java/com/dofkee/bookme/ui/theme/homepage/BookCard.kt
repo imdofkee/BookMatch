@@ -1,5 +1,6 @@
-package com.dofkee.bookme.ui.component
+package com.dofkee.bookme.ui.theme.homepage
 
+import com.dofkee.bookme.R
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -9,8 +10,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.paint
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -23,14 +27,19 @@ fun BookCard(
     modifier: Modifier = Modifier
 ) {
     Box(
-        modifier = modifier.fillMaxSize().clip(RoundedCornerShape(32.dp))
-            .background(Color.Gray) // заглушка
+        modifier = modifier
+            .fillMaxSize()
+            .clip(RoundedCornerShape(32.dp))
+            .paint(
+                painter = painterResource(R.drawable.bookpic),
+                contentScale = ContentScale.Crop
+            )
     ) {
         AsyncImage(
             model = book.photo,
             contentDescription = "Обложка книги ${book.title}",
             modifier = Modifier.fillMaxSize(),
-            contentScale = androidx.compose.ui.layout.ContentScale.Crop
+            contentScale = ContentScale.Crop
         )
         Box(
             modifier = Modifier
