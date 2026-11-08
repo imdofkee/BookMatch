@@ -12,4 +12,6 @@ val GrayTextColor = Color(0xFF7A7A7A)
 val DarkFilledTextInput = Color(0xFF41474A)
 val FilledTextInput = Color(0xFFCCD5DA)
 
-
+//booklist colors
+val DarkBooklist = Color(0xFF275D8C)
+val LightBooklist = Color(0xFF8FAEC8)

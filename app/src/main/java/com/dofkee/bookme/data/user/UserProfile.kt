@@ -40,7 +40,7 @@ import java.util.TimeZone
 
 @OptIn(ExperimentalLayoutApi::class, ExperimentalMaterial3Api::class)
 @Composable
-fun ProfileScreen(modifier: Modifier) {
+fun ProfileScreen(modifier: Modifier, onBack: () -> Unit) {
     val isDarkTheme = isSystemInDarkTheme()
 
     val backgroundColor = if (isDarkTheme) DarkBgColor else BgColor
@@ -325,7 +325,6 @@ fun GenreChip(
     ) {
         if (!isSelected) {
             Icon(
-                // временные иконки
                 painter = painterResource(R.drawable.strelka_back),
                 contentDescription = null,
                 tint = textColor,
