@@ -1,13 +1,18 @@
 package com.dofkee.bookme
 
-import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
@@ -15,9 +20,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.dofkee.bookme.data.user.ProfileScreen
 import com.dofkee.bookme.ui.theme.booklists.BooklistScreen
 import com.dofkee.bookme.ui.theme.booklists.BooklistsScreen
-import com.dofkee.bookme.data.user.ProfileScreen
 import com.dofkee.bookme.ui.theme.homepage.BottomBar
 import com.dofkee.bookme.ui.theme.homepage.HomeScreen
 
@@ -60,18 +65,13 @@ fun AppRoutes(modifier: Modifier = Modifier) {
             composable(Routes.MAIN_PAGE) {
                 HomeScreen(
                     onSettingsClick = { router.navigate(Routes.SETTINGS) },
-                    onProfileClick  = { router.navigateTab(Routes.ACCOUNT) },
-                    onBooklistsClick = { router.navigateTab(Routes.BOOKLISTS) }
+                    onProfileClick  = { router.navigateTab(Routes.ACCOUNT) }
                 )
             }
 
             composable(Routes.BOOKLISTS) {
                 BooklistsScreen(
-                    modifier = Modifier,
-                    onBack = { router.popBackStack() },
-                    onCollectionClick = { id ->
-                        router.navigate(Routes.collection(id))
-                    }
+                    onCollectionClick = { id -> router.navigate(Routes.collection(id)) }
                 )
             }
 
@@ -94,6 +94,25 @@ fun AppRoutes(modifier: Modifier = Modifier) {
                     onBack = { router.popBackStack() }
                 )
             }
+
+            composable(Routes.SETTINGS) {
+                SettingsPlaceholderScreen(onBack = { router.popBackStack() })
+            }
         }
+    }
+}
+
+@Composable
+private fun SettingsPlaceholderScreen(onBack: () -> Unit) {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(20.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        Text("Настроек пока нет, но скоро здесь можно будет изменить язык!")
+        Spacer(Modifier.height(16.dp))
+        Button(onClick = onBack) { Text("Назад") }
     }
 }
