@@ -5,7 +5,7 @@ import com.dofkee.bookme.data.remote.dto.BookDto
 class RemoteDataSource(private val mifApi: MifAPI) {
 
     suspend fun getBooksFromAPI(search: String?): List<BookDto> {
-        val response = mifApi.getBooks(search = search)
+        val response = mifApi.getBooks()
         return response.books ?: emptyList()
     }
 

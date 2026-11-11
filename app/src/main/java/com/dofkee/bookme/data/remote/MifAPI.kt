@@ -12,7 +12,7 @@ interface MifAPI {
     suspend fun getBooks(
         @Query("search") search: String? = null,
         @Query("author") author: String? = null,
-        @Query("limit") limit: Int = 10,
+//        @Query("limit") limit: Int = 100,
         @Query("offset") offset: Int = 0
     ): BooksResponse
     @GET("api/v1/books/{id}")
