@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">BookMatch</string>
+
+    <!--    изменение локализации-->
+    <string name="settings">Настройки</string>
+    <string name="back">Назад</string>
+    <string name="change_language">Переключить язык</string>
+    <string name="choose_language">Выберите язык</string>
+    <string name="cancel">Отмена</string>
+
+    <string name="language_system">Системный</string>
+    <string name="language_english">English</string>
+    <string name="language_russian">Русский</string>
+    <string name="language_spanish">Español</string>
 </resources>
