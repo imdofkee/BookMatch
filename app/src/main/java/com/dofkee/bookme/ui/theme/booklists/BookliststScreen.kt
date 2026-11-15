@@ -19,6 +19,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -29,30 +30,33 @@ import com.dofkee.bookme.ui.theme.BgColor
 import com.dofkee.bookme.ui.theme.CoralColor
 import com.dofkee.bookme.ui.theme.DarkBgColor
 import com.dofkee.bookme.ui.theme.DarkBooklist
+import com.dofkee.bookme.ui.theme.DarkFilledTextInput
 import com.dofkee.bookme.ui.theme.LightBooklist
 import com.dofkee.bookme.ui.theme.TextColor
+import com.dofkee.bookme.ui.theme.settings.SettingsScreen
 
 @Composable
 fun BooklistsScreen(
     modifier: Modifier = Modifier,
-    onCollectionClick: (String) -> Unit
+    onCollectionClick: (String) -> Unit,
+    onSettingsClick: () -> Unit
 ) {
     BooklistsContent(
         modifier = modifier,
-        onBooklistClick = onCollectionClick
-    )
+        onBooklistClick = onCollectionClick,
+        onSettingsClick = onSettingsClick)
 }
 
 @Composable
 fun BooklistsContent(
     modifier: Modifier = Modifier,
-    onBooklistClick: (String) -> Unit
+    onBooklistClick: (String) -> Unit,
+    onSettingsClick: () -> Unit
 ) {
     val isDarkTheme = isSystemInDarkTheme()
 
     val bgColor = if (isDarkTheme) DarkBgColor else BgColor
-    // было: if (isDarkTheme) TextColor else TextColor — ветви идентичны
-    val textColor = TextColor
+    val textColor = if (isDarkTheme) TextColor else DarkFilledTextInput
     val recColor = if (isDarkTheme) DarkBooklist else LightBooklist
 
     Box(
@@ -77,7 +81,7 @@ fun BooklistsContent(
                     painter = painterResource(R.drawable.settingsicon),
                     contentDescription = "Settings",
                     tint = Color(0xFF7C8A97),
-                    modifier = Modifier.size(32.dp).clickable { /* Настройки */ }
+                    modifier = Modifier.size(32.dp).clickable { onBooklistClick }
                 )
                 Text(
                     text = "BOOKLISTS",
@@ -86,7 +90,7 @@ fun BooklistsContent(
                     fontWeight = FontWeight.Black,
                     style = TextStyle(
                         shadow = Shadow(
-                            color = Color.Black,
+                            color = CoralColor,
                             offset = Offset(2f, 2f),
                             blurRadius = 2f
                         )
@@ -105,34 +109,34 @@ fun BooklistsContent(
             Spacer(modifier = Modifier.height(40.dp))
 
             Text(
-                text = "Мои Буклисты:",
+                text = stringResource(R.string.mybooklists),
                 color = textColor,
                 fontSize = 18.sp,
                 modifier = Modifier.padding(bottom = 12.dp)
             )
 
-            MenuButton(text = "Сохраненное #1", bgColor = CoralColor, textColor = TextColor) { onBooklistClick("Сохраненное #1") }
+            MenuButton("#1", bgColor = CoralColor, textColor = TextColor) { onBooklistClick("Сохраненное #1") }
             Spacer(modifier = Modifier.height(12.dp))
-            MenuButton(text = "Сохраненное #2", bgColor = CoralColor, textColor = TextColor) { onBooklistClick("Сохраненное #2") }
+            MenuButton("#2", bgColor = CoralColor, textColor = TextColor) { onBooklistClick("Сохраненное #2") }
             Spacer(modifier = Modifier.height(12.dp))
-            MenuButton(text = "Сохраненное #3", bgColor = CoralColor, textColor = TextColor) { onBooklistClick("Сохраненное #3") }
+            MenuButton("#3", bgColor = CoralColor, textColor = TextColor) { onBooklistClick("Сохраненное #3") }
 
             Spacer(modifier = Modifier.height(40.dp))
 
             Text(
-                text = "Рекомендуем:",
+                stringResource(R.string.recomend),
                 color = textColor,
                 fontSize = 18.sp,
                 modifier = Modifier.padding(bottom = 12.dp)
             )
 
-            MenuButton(text = "Экранизированные книги", bgColor = recColor, textColor = TextColor) { }
+            MenuButton(stringResource(R.string.adapted), bgColor = recColor, textColor = TextColor) { }
             Spacer(modifier = Modifier.height(12.dp))
-            MenuButton(text = "Книги на английском языке", bgColor = recColor, textColor = TextColor) { }
+            MenuButton(stringResource(R.string.onEng), bgColor = recColor, textColor = TextColor) { }
             Spacer(modifier = Modifier.height(12.dp))
-            MenuButton(text = "Антиутопии", bgColor = recColor, textColor = TextColor) { }
+            MenuButton(stringResource(R.string.dystopias), bgColor = recColor, textColor = TextColor) { }
             Spacer(modifier = Modifier.height(12.dp))
-            MenuButton(text = "Интеллегенетная классика", bgColor = recColor, textColor = TextColor) { }
+            MenuButton(stringResource(R.string.intellegent), bgColor = recColor, textColor = TextColor) { }
         }
     }
 }

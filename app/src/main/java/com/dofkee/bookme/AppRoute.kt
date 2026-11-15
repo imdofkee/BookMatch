@@ -72,7 +72,8 @@ fun AppRoutes(modifier: Modifier = Modifier) {
 
             composable(Routes.BOOKLISTS) {
                 BooklistsScreen(
-                    onCollectionClick = { id -> router.navigate(Routes.collection(id)) }
+                    onCollectionClick = { id -> router.navigate(Routes.collection(id)) },
+                    onSettingsClick  = { router.navigate(Routes.SETTINGS) }
                 )
             }
 
