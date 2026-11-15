@@ -24,7 +24,7 @@ import com.dofkee.bookme.R
 import com.dofkee.bookme.ui.theme.TextColor
 
 enum class AppLanguage(val code: String, val labelRes: Int) {
-//    SYSTEM("",   R.string.language_system),
+    SYSTEM("",   R.string.language_system),
     ENGLISH("en", R.string.language_english),
     RUSSIAN("ru", R.string.language_russian),
     SPANISH("es", R.string.language_spanish)
@@ -91,25 +91,24 @@ fun SettingsScreen(
 private fun rememberCurrentLanguage(): AppLanguage {
     val locales = AppCompatDelegate.getApplicationLocales()
     return remember(locales) {
-//        if (locales.isEmpty) {
-//            AppLanguage.SYSTEM
-//        } else {
-//            val langCode = locales.get(0)?.language ?: ""
-//            AppLanguage.entries.firstOrNull { it.code == langCode } ?: AppLanguage.SYSTEM
+        if (locales.isEmpty) {
+            AppLanguage.SYSTEM
+        } else {
             val langCode = locales.get(0)?.language ?: ""
-            AppLanguage.entries.firstOrNull { it.code == langCode } ?: AppLanguage.RUSSIAN
+            AppLanguage.entries.firstOrNull { it.code == langCode } ?: AppLanguage.SYSTEM
     }
+}
 }
 
 
 private fun applyLanguage(lang: AppLanguage) {
-//    val locales = if (lang == AppLanguage.SYSTEM) {
-//        LocaleListCompat.getEmptyLocaleList()
-//    } else {
+    val locales = if (lang == AppLanguage.SYSTEM) {
+        LocaleListCompat.getEmptyLocaleList()
+    } else {
         LocaleListCompat.forLanguageTags(lang.code)
     }
-//    AppCompatDelegate.setApplicationLocales(locales)
-//}
+    AppCompatDelegate.setApplicationLocales(locales)
+}
 
 @Composable
 private fun LanguagePickerDialog(

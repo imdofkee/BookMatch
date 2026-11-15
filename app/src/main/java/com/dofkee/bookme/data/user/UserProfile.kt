@@ -20,6 +20,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -50,18 +51,19 @@ fun ProfileScreen(modifier: Modifier, onBack: () -> Unit) {
     val placeholderColor = if (isDarkTheme) GrayTextColor else GrayTextColor
 
     // все состояния
-    var firstName by remember { mutableStateOf("Как тебя зовут?") }
+    var firstName by remember { mutableStateOf("") }
     var lastName by remember { mutableStateOf("") }
     var userTag by remember { mutableStateOf("") }
     var birthDateMillis by remember { mutableStateOf<Long?>(null) }
     var showDatePicker by remember { mutableStateOf(false) }
 
     // жанры
-    val allGenres = listOf("Комедия", "Современная проза", "Приключения", "Фэнтези", "Фантастика", "Триллер", "Ужасы", "Мистика", "Нон-фикшн", "Сказки", "Детектив")
+    val allGenres = listOf(stringResource(R.string.genre_comedy), stringResource(R.string.genre_prose), stringResource(R.string.genre_adventures), stringResource(R.string.genre_fantasy), stringResource(R.string.genre_fantastic), stringResource(R.string.genre_triller), stringResource(R.string.genre_scares), stringResource(R.string.genre_triller), stringResource(R.string.genre_nonfic), stringResource(R.string.genre_tales), stringResource(R.string.genre_detective))
     val selectedGenres = remember { mutableStateListOf("", "", "", "", "") }
 
     val displayName = listOf(firstName.trim(), lastName.trim()).filter { it.isNotBlank() }.joinToString(" ")
     val displayTag = userTag.trim()
+    val placeholder = stringResource(R.string.bdplaceholder)
 
     // форматирование др
     val birthDateText = remember(birthDateMillis) {
@@ -69,14 +71,15 @@ fun ProfileScreen(modifier: Modifier, onBack: () -> Unit) {
             val sdf = SimpleDateFormat("dd.MM.yyyy", Locale.getDefault())
             sdf.timeZone = TimeZone.getTimeZone("UTC")
             sdf.format(Date(millis))
-        } ?: "ДД.ММ.ГГГГ"
+        } ?: placeholder
     }
 
     Scaffold(
-        containerColor = backgroundColor
+        containerColor = backgroundColor,
+        contentWindowInsets = WindowInsets(0)
     ) { paddingValues ->
         Column(
-            modifier = Modifier.fillMaxSize().padding(paddingValues).verticalScroll(rememberScrollState()).padding(horizontal = 20.dp)
+            modifier = Modifier.fillMaxSize().padding(paddingValues).verticalScroll(rememberScrollState()).padding(horizontal = 25.dp)
         ) {
             // НАЗАД
             IconButton(
@@ -113,13 +116,14 @@ fun ProfileScreen(modifier: Modifier, onBack: () -> Unit) {
 
                 Column {
                     Text(
-                        text = displayName.ifBlank { "Имя Фамилия" },
+
+                        text = displayName.ifBlank { " " },
                         color = if (displayName.isBlank()) placeholderColor else textColor,
                         fontSize = 18.sp,
                         fontWeight = FontWeight.Medium
                     )
                     Text(
-                        text = if (displayTag.isBlank()) "@тег" else "@$displayTag",
+                        text = if (displayTag.isBlank()) " " else "@$displayTag",
                         color = secondaryTextColor,
                         fontSize = 14.sp
                     )
@@ -129,7 +133,7 @@ fun ProfileScreen(modifier: Modifier, onBack: () -> Unit) {
             Spacer(modifier = Modifier.height(32.dp))
 
             // поле ввода
-            Text("Имя", color = textColor, fontSize = 16.sp, modifier = Modifier.padding(bottom = 8.dp))
+            Text(stringResource(R.string.name), color = textColor, fontSize = 16.sp, modifier = Modifier.padding(bottom = 8.dp))
 
             // блок с фио
             Column(
@@ -142,7 +146,7 @@ fun ProfileScreen(modifier: Modifier, onBack: () -> Unit) {
                     value = firstName,
                     onValueChange = { firstName = it },
                     textColor = textColor,
-                    placeholder = "Имя",
+                    placeholder = stringResource(R.string.name),
                     placeholderColor = placeholderColor
                 )
                 HorizontalDivider(color = backgroundColor, thickness = 1.dp)
@@ -150,7 +154,7 @@ fun ProfileScreen(modifier: Modifier, onBack: () -> Unit) {
                     value = lastName,
                     onValueChange = { lastName = it },
                     textColor = textColor,
-                    placeholder = "Фамилия",
+                    placeholder = stringResource(R.string.surname),
                     placeholderColor = placeholderColor
                 )
             }
@@ -158,7 +162,7 @@ fun ProfileScreen(modifier: Modifier, onBack: () -> Unit) {
             Spacer(modifier = Modifier.height(24.dp))
 
             // тег
-            Text("Тэг пользователя", color = textColor, fontSize = 16.sp, modifier = Modifier.padding(bottom = 8.dp))
+            Text(stringResource(R.string.tag), color = textColor, fontSize = 16.sp, modifier = Modifier.padding(bottom = 8.dp))
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -174,7 +178,7 @@ fun ProfileScreen(modifier: Modifier, onBack: () -> Unit) {
                         }
                     },
                     textColor = textColor,
-                    placeholder = "тег",
+                    placeholder = "tag",
                     placeholderColor = placeholderColor,
                     prefix = "@"
                 )
@@ -183,7 +187,7 @@ fun ProfileScreen(modifier: Modifier, onBack: () -> Unit) {
             Spacer(modifier = Modifier.height(24.dp))
 
             // др datePicker
-            Text("Дата рождения", color = textColor, fontSize = 16.sp, modifier = Modifier.padding(bottom = 8.dp))
+            Text(stringResource(R.string.bday), color = textColor, fontSize = 16.sp, modifier = Modifier.padding(bottom = 8.dp))
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -202,7 +206,7 @@ fun ProfileScreen(modifier: Modifier, onBack: () -> Unit) {
             Spacer(modifier = Modifier.height(32.dp))
 
             // мои жанры
-            Text("Мои жанры", color = textColor, fontSize = 18.sp, fontWeight = FontWeight.Medium, modifier = Modifier.padding(bottom = 12.dp))
+            Text(stringResource(R.string.genres), color = textColor, fontSize = 18.sp, fontWeight = FontWeight.Medium, modifier = Modifier.padding(bottom = 12.dp))
 
             FlowRow(
                 horizontalArrangement = Arrangement.spacedBy(8.dp),
@@ -337,7 +341,6 @@ fun GenreChip(
             text = text,
             color = textColor,
             fontSize = 13.sp
-
         )
     }
 }

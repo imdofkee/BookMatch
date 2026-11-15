@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">BookMatch</string>
+    <string name="settings">Settings</string>
+    <string name="back">Back</string>
+    <string name="change_language">Change language</string>
+    <string name="choose_language">Choose a language</string>
+    <string name="cancel">Cancel</string>
+    <string name="language_system">System</string>
+
+    <string name="genre_comedy">Comedy</string>
+    <string name="genre_prose">Prose</string>
+    <string name="genre_adventures">Andventures</string>
+    <string name="genre_fantasy">Fantasy</string>
+    <string name="genre_fantastic">Fantasy</string>
+    <string name="genre_triller">Thriller</string>
+    <string name="genre_scares">Horror</string>
+    <string name="genre_mistic">Mystic</string>
+    <string name="genre_nonfic">Non-Fiction</string>
+    <string name="genre_tales">Tales</string>
+    <string name="genre_detective">Detective</string>
+    <string name="name">Name</string>
+    <string name="surname">Surname</string>
+    <string name="tag">User tag</string>
+    <string name="bday">Birthday date</string>
+    <string name="genres">My genres</string>
+    <string name="mybooklists">My booklists</string>
+    <string name="booklist">Booklist</string>
+    <string name="recomend">We recomend</string>
+    <string name="intellegent">Intellegent classic</string>
+    <string name="dystopias">Dystopias</string>
+    <string name="onEng">Books on English</string>
+    <string name="adapted">Books Adapted for the Screen</string>
+    <string name="bdplaceholder">DD.MM.YYYY</string>
+    <string name="bookserror">It seems the books have run out!</string>
+
+</resources>
