@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">ブックマッチ</string>
+
+    <string name="settings">設定</string>
+    <string name="back">戻る</string>
+    <string name="change_language">言語を切り替える</string>
+    <string name="choose_language">言語を選択してください</string>
+    <string name="cancel">キャンセル</string>
+
+    <string name="language_system">システム</string>
+
+    <string name="genre_comedy">コメディ</string>
+    <string name="genre_prose">現代散文</string>
+    <string name="genre_adventures">冒険</string>
+    <string name="genre_fantasy">ファンタジー</string>
+    <string name="genre_fantastic">ファンタジー</string>
+    <string name="genre_triller">スリラー</string>
+    <string name="genre_scares">ホラー</string>
+    <string name="genre_mistic">神秘主義</string>
+    <string name="genre_nonfic">ノンフィクション</string>
+    <string name="genre_tales">おとぎ話</string>
+    <string name="genre_detective">探偵</string>
+    <string name="name">名前</string>
+    <string name="surname">苗字</string>
+    <string name="tag">ユーザータグ</string>
+    <string name="bday">誕生日</string>
+    <string name="genres">私のジャンル</string>
+    <string name="mybooklists">私のブックリスト</string>
+    <string name="booklist">ブックリスト</string>
+    <string name="recomend">お勧めします</string>
+    <string name="intellegent">インテリジェントなクラシック</string>
+    <string name="dystopias">アンチユートピア</string>
+    <string name="onEng">英語の本</string>
+    <string name="adapted">映画化された本</string>
+    <string name="bdplaceholder">DD.MM.YYYY</string>
+    <string name="bookserror">本も終わってしまったようです！</string>
+</resources>

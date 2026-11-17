@@ -1,3 +1,46 @@
 <resources>
     <string name="app_name">BookMatch</string>
+
+    <string name="settings">Настройки</string>
+    <string name="back">Назад</string>
+    <string name="change_language">Переключить язык</string>
+    <string name="choose_language">Выберите язык</string>
+    <string name="cancel">Отмена</string>
+
+    <string name="language_system">Системный</string>
+    <string name="language_english" translatable="false">English</string>
+    <string name="language_russian" translatable="false">Русский</string>
+    <string name="language_spanish" translatable="false">Español</string>
+    <string name="language_deuchland" translatable="false">Deutsch</string>
+    <string name="language_franch" translatable="false">Français</string>
+    <string name="language_japanise" translatable="false">日本語</string>
+    <string name="language_portugal" translatable="false">Português</string>
+    <string name="language_ukrain" translatable="false">Українська</string>
+    <string name="language_cheh" translatable="false">čeština</string>
+
+    <string name="genre_comedy">Комедия</string>
+    <string name="genre_prose">Современная проза</string>
+    <string name="genre_adventures">Приключения</string>
+    <string name="genre_fantasy">Фэнтези</string>
+    <string name="genre_fantastic">Фантастика</string>
+    <string name="genre_triller">Триллер</string>
+    <string name="genre_scares">Ужасы</string>
+    <string name="genre_mistic">Мистика</string>
+    <string name="genre_nonfic">Нон-фикшн</string>
+    <string name="genre_tales">Сказки</string>
+    <string name="genre_detective">Детектив</string>
+    <string name="name">Имя</string>
+    <string name="surname">Фамилия</string>
+    <string name="tag">Тэг пользователя</string>
+    <string name="bday">День рождения</string>
+    <string name="genres">Мои жанры</string>
+    <string name="mybooklists">Мои буклисты</string>
+    <string name="booklist">Буклист</string>
+    <string name="recomend">Рекомендуем</string>
+    <string name="intellegent">Интеллегентная классика</string>
+    <string name="dystopias">Антиутопии</string>
+    <string name="onEng">Книги на английском языке</string>
+    <string name="adapted">Экранизированные книги</string>
+    <string name="bdplaceholder">ДД.ММ.ГГГГ</string>
+    <string name="bookserror">Кажется, что книги закончились!</string>
 </resources>

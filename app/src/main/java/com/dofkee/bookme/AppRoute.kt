@@ -25,6 +25,7 @@ import com.dofkee.bookme.ui.theme.booklists.BooklistScreen
 import com.dofkee.bookme.ui.theme.booklists.BooklistsScreen
 import com.dofkee.bookme.ui.theme.homepage.BottomBar
 import com.dofkee.bookme.ui.theme.homepage.HomeScreen
+import com.dofkee.bookme.ui.theme.settings.SettingsScreen
 
 object Routes {
     const val MAIN_PAGE = "main_page"
@@ -71,7 +72,8 @@ fun AppRoutes(modifier: Modifier = Modifier) {
 
             composable(Routes.BOOKLISTS) {
                 BooklistsScreen(
-                    onCollectionClick = { id -> router.navigate(Routes.collection(id)) }
+                    onCollectionClick = { id -> router.navigate(Routes.collection(id)) },
+                    onSettingsClick  = { router.navigate(Routes.SETTINGS) }
                 )
             }
 
@@ -96,8 +98,12 @@ fun AppRoutes(modifier: Modifier = Modifier) {
             }
 
             composable(Routes.SETTINGS) {
-                SettingsPlaceholderScreen(onBack = { router.popBackStack() })
+              SettingsScreen(
+                  modifier = Modifier,
+                  onBack = {router.popBackStack()})
+            //                SettingsPlaceholderScreen(onBack = { router.popBackStack() })
             }
+
         }
     }
 }

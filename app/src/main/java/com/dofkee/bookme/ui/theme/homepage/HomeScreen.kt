@@ -12,8 +12,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -54,7 +56,7 @@ fun HomeScreen(
             verticalAlignment = Alignment.CenterVertically
         ) {
             IconButton(onClick = onSettingsClick) {
-                Icon(painterResource(R.drawable.settingsicon), "Настройки", tint = TextColor)
+                Icon(painterResource(R.drawable.settingsicon), "Настройки", tint = DarkBlueColor)
             }
             IconButton(onClick = onProfileClick) {
                 Icon(painterResource(R.drawable.usericon), "Профиль", modifier = Modifier.size(36.dp))
@@ -76,7 +78,7 @@ fun HomeScreen(
                 )
                 is BookUiState.Success -> {
                     if (books.isEmpty()) {
-                        Text("Кажется, что книги закончились!", color = TextColor, modifier = Modifier.align(Alignment.Center))
+                        Text(stringResource(R.string.bookserror), color = OrangeColor, modifier = Modifier.align(Alignment.Center))
                     } else {
                         HorizontalPager(
                             state = pagerState,
@@ -105,7 +107,7 @@ fun HomeScreen(
                     },
                 contentAlignment = Alignment.Center
             ) {
-                Icon(painterResource(R.drawable.thumbs_downicon), "Дизлайк", tint = Color.White)
+                Icon(painterResource(R.drawable.thumbs_downicon), "Дизлайк", tint = Color.White,  modifier = Modifier.size(25.dp))
             }
 
             Box(
@@ -131,10 +133,10 @@ fun HomeScreen(
                     },
                 contentAlignment = Alignment.Center
             ) {
-                Icon(painterResource(R.drawable.likeixon), "Лайк", tint = Color.White)
+                Icon(painterResource(R.drawable.likeixon), "Лайк", tint = Color.White, modifier = Modifier.size(25.dp))
             }
         }
 
-        Spacer(Modifier.height(16.dp))
+//        Spacer(Modifier.height(16.dp))
     }
 }

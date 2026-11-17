@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">BookMatch</string>
+
+    <string name="settings">Налаштування</string>
+    <string name="back">Назад</string>
+    <string name="change_language">Переключити мову</string>
+    <string name="choose_language">Виберіть мову</string>
+    <string name="cancel">Скасування</string>
+
+    <string name="language_system">Системний</string>
+    
+    
+    
+    
+    
+    
+    <string name="genre_comedy">Комедія</string>
+    <string name="genre_prose">Сучасна проза</string>
+    <string name="genre_adventures">Пригоди</string>
+    <string name="genre_fantasy">Фентезі</string>
+    <string name="genre_fantastic">Фантастика</string>
+    <string name="genre_triller">Трилер</string>
+    <string name="genre_scares">Жахи</string>
+    <string name="genre_mistic">Містика</string>
+    <string name="genre_nonfic">Нон-фікшн</string>
+    <string name="genre_tales">Казки</string>
+    <string name="genre_detective">Детектив</string>
+    <string name="name">Ім\'я</string>
+    <string name="surname">Прізвище</string>
+    <string name="tag">Тег користувача</string>
+    <string name="bday">День народження</string>
+    <string name="genres">Мої жанри</string>
+    <string name="mybooklists">Мої буклісти</string>
+    <string name="booklist">Книжковий список</string>
+    <string name="recomend">Рекомендуємо</string>
+    <string name="intellegent">Інтелегентна класика</string>
+    <string name="dystopias">Антиутопії</string>
+    <string name="onEng">Книги англійською мовою</string>
+    <string name="adapted">Екранізовані книги</string>
+    <string name="bdplaceholder">ДД.ММ.РРРР</string>
+    <string name="bookserror">Здається, що книжки скінчилися!</string>
+</resources>

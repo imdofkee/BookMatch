@@ -1,7 +1,7 @@
 package com.dofkee.bookme.data.remote
 
 import com.dofkee.bookme.data.remote.dto.BookDto
-import com.dofkee.bookme.data.remote.BooksResponse
+//import com.dofkee.bookme.data.remote.BooksResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -12,8 +12,8 @@ interface MifAPI {
     suspend fun getBooks(
         @Query("search") search: String? = null,
         @Query("author") author: String? = null,
-//        @Query("limit") limit: Int = 100,
-        @Query("offset") offset: Int = 0
+        @Query("limit") limit: Int = 100,
+        @Query("offset") offset: Int = 100
     ): BooksResponse
     @GET("api/v1/books/{id}")
     suspend fun getBookById(@Path("id") id: Int): BookDto
