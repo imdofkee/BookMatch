@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">BookMatch</string>
+
+    <string name="settings">Paramètres</string>
+    <string name="back">Dos</string>
+    <string name="change_language">Changer de langue</string>
+    <string name="choose_language">Sélectionnez la langue</string>
+    <string name="cancel">Annuler</string>
+
+    <string name="language_system">Système</string>
+    
+    
+    
+    
+    
+    
+    <string name="genre_comedy">Comédie</string>
+    <string name="genre_prose">Prose moderne</string>
+    <string name="genre_adventures">Aventures</string>
+    <string name="genre_fantasy">Fantaisie</string>
+    <string name="genre_fantastic">Fantaisie</string>
+    <string name="genre_triller">Thriller</string>
+    <string name="genre_scares">Horreur</string>
+    <string name="genre_mistic">Mysticisme</string>
+    <string name="genre_nonfic">Non-fiction</string>
+    <string name="genre_tales">Contes de fées</string>
+    <string name="genre_detective">Détective</string>
+    <string name="name">Nom</string>
+    <string name="surname">Nom de famille</string>
+    <string name="tag">Balise utilisateur</string>
+    <string name="bday">Anniversaire</string>
+    <string name="genres">Mes genres</string>
+    <string name="mybooklists">Mes listes de livres</string>
+    <string name="booklist">Liste de livres</string>
+    <string name="recomend">Nous recommandons</string>
+    <string name="intellegent">Classique intelligent</string>
+    <string name="dystopias">Antiutopies</string>
+    <string name="onEng">Livres en anglais</string>
+    <string name="adapted">Livres filmés</string>
+    <string name="bdplaceholder">JJ.MM.AAAA</string>
+    <string name="bookserror">On dirait que les livres sont finis !</string>
+</resources>

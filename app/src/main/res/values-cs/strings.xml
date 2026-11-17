@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">BookMatch</string>
+
+    <string name="settings">Nastavení</string>
+    <string name="back">Zadní</string>
+    <string name="change_language">Přepnout jazyk</string>
+    <string name="choose_language">Vyberte jazyk</string>
+    <string name="cancel">Zrušit</string>
+
+    <string name="language_system">Systém</string>
+    
+    
+    
+    
+    
+    
+    <string name="genre_comedy">Komedie</string>
+    <string name="genre_prose">Moderní próza</string>
+    <string name="genre_adventures">Dobrodružství</string>
+    <string name="genre_fantasy">Fantazie</string>
+    <string name="genre_fantastic">Fantazie</string>
+    <string name="genre_triller">Thriller</string>
+    <string name="genre_scares">Hrůza</string>
+    <string name="genre_mistic">Mysticismus</string>
+    <string name="genre_nonfic">Literatura faktu</string>
+    <string name="genre_tales">Pohádky</string>
+    <string name="genre_detective">Detektivní</string>
+    <string name="name">Jméno</string>
+    <string name="surname">Příjmení</string>
+    <string name="tag">Uživatelská značka</string>
+    <string name="bday">Narozeniny</string>
+    <string name="genres">Moje žánry</string>
+    <string name="mybooklists">Moje seznamy knih</string>
+    <string name="booklist">Booklist</string>
+    <string name="recomend">Doporučujeme</string>
+    <string name="intellegent">Inteligentní klasika</string>
+    <string name="dystopias">Antiutopie</string>
+    <string name="onEng">Knihy v angličtině</string>
+    <string name="adapted">Zfilmované knihy</string>
+    <string name="bdplaceholder">DD.MM.RRRR</string>
+    <string name="bookserror">Zdá se, že knihám je konec!</string>
+</resources>

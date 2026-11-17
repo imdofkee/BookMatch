@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">Libropartido</string>
+
+    <string name="settings">Ajustes</string>
+    <string name="back">Atrás</string>
+    <string name="change_language">Cambiar idioma</string>
+    <string name="choose_language">Seleccionar idioma</string>
+    <string name="cancel">Cancelar</string>
+
+    <string name="language_system">Sistema</string>
+    
+    
+    
+    
+    
+    
+    <string name="genre_comedy">Comedia</string>
+    <string name="genre_prose">prosa moderna</string>
+    <string name="genre_adventures">Aventuras</string>
+    <string name="genre_fantasy">Fantasía</string>
+    <string name="genre_fantastic">Fantasía</string>
+    <string name="genre_triller">Suspenso</string>
+    <string name="genre_scares">Horror</string>
+    <string name="genre_mistic">Misticismo</string>
+    <string name="genre_nonfic">No ficción</string>
+    <string name="genre_tales">cuentos de hadas</string>
+    <string name="genre_detective">Detective</string>
+    <string name="name">Nombre</string>
+    <string name="surname">Apellido</string>
+    <string name="tag">Etiqueta de usuario</string>
+    <string name="bday">Cumpleaños</string>
+    <string name="genres">Mis géneros</string>
+    <string name="mybooklists">Mis listas de libros</string>
+    <string name="booklist">Lista de libros</string>
+    <string name="recomend">recomendamos</string>
+    <string name="intellegent">Clásico inteligente</string>
+    <string name="dystopias">Antiutopías</string>
+    <string name="onEng">Libros en ingles</string>
+    <string name="adapted">libros filmados</string>
+    <string name="bdplaceholder">DD.MM.AAAA</string>
+    <string name="bookserror">¡Parece que se acabaron los libros!</string>
+</resources>

@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">BookMatch</string>
 
-    <!--    изменение локализации-->
     <string name="settings">Настройки</string>
     <string name="back">Назад</string>
     <string name="change_language">Переключить язык</string>
@@ -12,6 +11,13 @@
     <string name="language_english" translatable="false">English</string>
     <string name="language_russian" translatable="false">Русский</string>
     <string name="language_spanish" translatable="false">Español</string>
+    <string name="language_deuchland" translatable="false">Deutsch</string>
+    <string name="language_franch" translatable="false">Français</string>
+    <string name="language_japanise" translatable="false">日本語</string>
+    <string name="language_portugal" translatable="false">Português</string>
+    <string name="language_ukrain" translatable="false">Українська</string>
+    <string name="language_cheh" translatable="false">čeština</string>
+
     <string name="genre_comedy">Комедия</string>
     <string name="genre_prose">Современная проза</string>
     <string name="genre_adventures">Приключения</string>

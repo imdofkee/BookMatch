@@ -27,7 +27,14 @@ enum class AppLanguage(val code: String, val labelRes: Int) {
     SYSTEM("",   R.string.language_system),
     ENGLISH("en", R.string.language_english),
     RUSSIAN("ru", R.string.language_russian),
-    SPANISH("es", R.string.language_spanish)
+    SPANISH("es", R.string.language_spanish),
+    DEICHLAND("de", R.string.language_deuchland),
+    FRENCH("fr", R.string.language_franch),
+    JAPANISE("ja", R.string.language_japanise),
+    PORTUGISE("pt", R.string.language_portugal),
+    UKRAIN("uk", R.string.language_ukrain),
+    CHEC("ch", R.string.language_cheh)
+
 }
 
 @Composable
